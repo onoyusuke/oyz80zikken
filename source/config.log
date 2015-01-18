@@ -1,0 +1,39 @@
+This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+configure:534: checking for gcc
+configure:611: checking whether the C compiler (gcc  ) works
+configure:625: gcc -o conftest    conftest.c  1>&5
+configure:645: checking whether the C compiler (gcc  ) is a cross-compiler
+configure:650: checking whether we are using GNU C
+configure:674: checking whether gcc accepts -g
+configure:731: checking for a BSD compatible install
+configure:782: checking for main in -ltermcap
+configure:830: checking for dirent.h that defines DIR
+configure:868: checking for opendir in -ldir
+configure:951: checking how to run the C preprocessor
+configure:1012: checking for ANSI C header files
+configure:1119: checking for fcntl.h
+configure:1119: checking for limits.h
+configure:1119: checking for sgtty.h
+configure:1119: checking for sys/file.h
+configure:1119: checking for sys/ioctl.h
+configure:1119: checking for sys/time.h
+configure:1119: checking for unistd.h
+configure:1159: checking for termios.h
+configure:1199: checking for curses.h
+configure:1199: checking for termcap.h
+configure:1237: checking for working const
+configure:1312: checking for size_t
+configure:1345: checking return type of signal handlers
+configure:1388: checking whether gcc needs -traditional
+configure:1434: checking for 8-bit clean memcmp
+configure:1472: checking for getcwd
+configure:1472: checking for strdup
+configure:1472: checking for strerror
+configure:1472: checking for strtol
+configure:1472: checking for strcasecmp
+configure:1527: checking for cfmakeraw
+configure:1527: checking for memmove
+configure:1527: checking for sigprocmask
+configure:1582: checking for fcntl

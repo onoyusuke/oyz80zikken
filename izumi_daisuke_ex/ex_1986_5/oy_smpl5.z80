@@ -1,0 +1,33 @@
+;
+; 1986年5月号に1987年6月号特集のデバグルーチンを組み合わせる。 
+;
+
+ ORG 8000H
+;
+ LD HL,9000H
+ LD (HL),0
+ LD DE,9001H
+ LD BC,255
+ LDIR
+;
+; Debug Routine 1.
+;
+%PRTS: EQU 1FF1H
+%LETNL: EQU 1FEEH
+%PRTHL: EQU 1FBEH
+;
+%HOT EQU 1FFAH
+
+%DBG:
+ PUSH HL
+ PUSH DE
+ PUSH BC
+ PUSH AF
+ ;
+ CALL %LETNL
+ LD B,5
+%DBG1: POP HL
+ CALL %PRTHL
+ CALL %PRTS
+ DJNZ %DBG1
+ JP %HOT:
