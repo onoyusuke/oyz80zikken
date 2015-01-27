@@ -1,0 +1,84 @@
+; ORG 8000H
+db "_SOS 01 8000 8000", 0x0a
+; LD DE,STR
+db 0x11
+db 0x2b
+db 0x80
+; LD BC,0
+db 0x01
+db 0x00
+db 0x00
+; PUSH DE
+db 0xd5
+; LD A,(DE)	LOOP:
+db 0x1a ; 
+; CP 0DH
+db 0xfe
+db 0x0d
+; JR Z,L100
+db 0x28
+db 0x04
+; IND DE
+db 0x13
+; INC BC
+db 0x03
+; JR LOOP	0DHを見つけるまでループ
+db 0x18
+db 0xf7
+; POP DE	L100: (LOOPから抜け出し、DEにSTRを回復)
+db 0xd1  
+; CALL INSTR (準備完了なのでINSTRを呼び出す)
+db 0xcd
+db 0x18
+db 0x80
+; CALL PRTHX (結果の表示)
+db 0xcd
+db 0xc1
+db 0x1f
+; RET (終了)
+db 0xc9
+
+; LD A,(DE)	 INSTR:
+db 0x1a 
+; INC DE (標的にむけて調整)
+db 0x13
+; DEC BC (カウンタ調整)
+db 0x0b
+; PUSH BC
+db 0xc5
+; EX DE,HL (HLに標的のアドレスが入る)
+db 0xeb
+; CPIR  Aと(HL)の比較
+db 0xed
+db 0xb1
+; JR Z,INSTR1　同じものがみつかった場合にはINSTR1に飛ぶ
+db 0x28
+db 0x04
+; POP BC　以下、同じものがみつからなかった場合の処理
+db 0xc1
+; XOR A
+db 0xaf
+; JR INSTR2 (INSTR2で書き込んで終了)
+db 0x18
+db 0x05
+; POP HL	INSTR1 (以下同じものがみつかった場合の処理)
+db 0xe1
+; OR A	キャリーフラグをリセット？
+db 0xb7
+; SBC HL,BC
+db 0xed
+db 0x42
+; LD A,L
+db 0x7d
+; RET		 INSTR2: (BASICから呼ぶときはLD (0F00H),A : RET のようにする)
+db 0xc9 
+;
+db 0x43 ; STR:
+db 0x41
+db 0x42
+db 0x43
+db 0x44
+db 0x45
+db 0x46
+db 0x47
+db 0x0d
