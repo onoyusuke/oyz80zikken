@@ -1,0 +1,12 @@
+  ORG 0x8000
+START: 
+; LD A, 0x41
+ LD DE,msg
+ call 0x1FE5
+ call 0x1FEE
+ call 0x1fca
+ call 0x1ff4
+ call 0x1fee
+ ret
+msg: defm "Press Any Key!"
+ defb 0x00
